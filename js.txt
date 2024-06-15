@@ -1,0 +1,25 @@
+var inputElement = document.getElementById('orgmap-search-input');
+var searchButton = document.getElementById('orgmap-search-launch');
+
+// Check if the input element exists
+if (inputElement) {
+    // Focus on the input element
+    inputElement.focus();
+
+    // Set a value in the input element
+    inputElement.value = 'Cost_center';
+
+    // Trigger the change event to ensure any attached AngularJS ng-change or other event handlers are called
+    var event = new Event('input', { bubbles: true });
+    inputElement.dispatchEvent(event);
+}
+
+// Check if the search button exists
+if (searchButton) {
+    searchButton.click();
+}
+
+// Add a delay of 1 second before clicking the orgmap-node-selector
+setTimeout(function() {
+    document.querySelector('.orgmap-node-selector').click();
+}, 1000);

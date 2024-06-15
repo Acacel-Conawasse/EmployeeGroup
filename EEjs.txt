@@ -1,0 +1,91 @@
+// Function to simulate clicking a button by its aria-label
+function clickButtonByAriaLabel(buttonAriaLabel) {
+    const button = document.querySelector(`button[aria-label="${buttonAriaLabel}"]`);
+    if (button) {
+        button.click();
+    }
+}
+
+// Function to update the search bar with Org Sets Name
+function updateSearchBar(searchBarId, orgSetsName) {
+    const searchBar = document.getElementById(searchBarId);
+    if (searchBar) {
+        searchBar.value = orgSetsName;
+        // Trigger the change event to ensure any attached AngularJS ng-change or other event handlers are called
+        const event = new Event('input', { bubbles: true });
+        searchBar.dispatchEvent(event);
+    }
+}
+
+// Function to click the search bar
+function clickSearchBar(searchBarClass) {
+    const searchBar = document.querySelector(searchBarClass);
+    if (searchBar) {
+        searchBar.click();
+    }
+}
+
+// Function to search in the search input
+function searchInSearchBar(searchInputClass, searchValue) {
+    const searchInput = document.querySelector(searchInputClass);
+    if (searchInput) {
+        searchInput.value = searchValue;
+        // Trigger the change event to ensure any attached AngularJS ng-change or other event handlers are called
+        const event = new Event('input', { bubbles: true });
+        searchInput.dispatchEvent(event);
+    }
+}
+
+// Function to select the value that matches the Org Sets Name
+function selectValueByLabel(label) {
+    const spans = document.querySelectorAll('span[ng-bind-html]');
+    for (let span of spans) {
+        if (span.innerText.includes(label)) {
+            span.click();
+            return;
+        }
+    }
+}
+
+// Function to click the save button by its text content
+function clickSaveButton() {
+    const saveButton = document.evaluate("//span[normalize-space()='Save']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+    if (saveButton) {
+        saveButton.click();
+    }
+}
+
+// Main function to perform the series of actions
+function performActions(orgSetsName) {
+    // Click the create button
+    clickButtonByAriaLabel('Create');
+    
+    // Wait for 1 second before the next action
+    setTimeout(() => {
+        // Update the search bar
+        updateSearchBar('metaid_data_name', orgSetsName);
+
+        // Wait another 1 second before clicking the search bar
+        setTimeout(() => {
+            clickSearchBar('#metaid_data_name');
+
+            // Wait another 1 second before searching in the search input
+            setTimeout(() => {
+                searchInSearchBar('.inputFilter', orgSetsName);
+
+                // Wait another 1 second before selecting the value
+                setTimeout(() => {
+                    selectValueByLabel(orgSetsName);
+
+                    // Wait another 1 second before clicking the save button
+                    setTimeout(() => {
+                        clickSaveButton();
+                    }, 1000);
+                }, 1000);
+            }, 1000);
+        }, 1000);
+    }, 1000);
+}
+
+// Call the function with the desired Org Sets Name
+performActions('OrgSet-');
