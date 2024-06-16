@@ -1,0 +1,26 @@
+2024-06-16 17:28:29,284 - Processed Employee Group: BMCN-JHHS-NURSING
+2024-06-16 17:28:42,769 - Processed Employee Group: BMCN-PerAdmin2-includeBP5-SSU
+2024-06-16 17:28:56,236 - Processed Employee Group: BMCN-PerAdmin-ex-BF1-BJ3-inBP5
+2024-06-16 17:29:09,703 - Processed Employee Group: BMCN-PerAdmin-excludes-BF1-BJ3
+2024-06-16 17:29:23,186 - Processed Employee Group: BMCN-PerAdmin-Inc JHHSFloat
+2024-06-16 17:29:36,670 - Processed Employee Group: MULTI-ABI,B51,E62,JC7,JD1-6
+2024-06-16 17:29:50,155 - Processed Employee Group: BMC-MGR-00228939
+2024-06-16 17:30:03,621 - Processed Employee Group: JHH-JHHS-MGR-0032708
+2024-06-16 17:30:17,122 - Processed Employee Group: MULTI-MGR-00151467
+2024-06-16 17:30:30,623 - Processed Employee Group: ACH-JHHS-MGR-00317280
+2024-06-16 17:30:44,106 - Processed Employee Group: JHH-JHHS-MGR-00312173
+2024-06-16 17:30:57,590 - Processed Employee Group: BMC-BN1-5,BW2,J49,SH9
+2024-06-16 17:31:11,074 - Processed Employee Group: MULTI-MGR-00307378
+2024-06-16 17:31:24,553 - Processed Employee Group: MULTI-MGR-00326615
+2024-06-16 17:31:38,025 - Processed Employee Group: BMC-002,BN1,BN2,BN3,BN4,BN5
+2024-06-16 17:31:51,545 - Processed Employee Group: BMCN-MGR-00040568
+2024-06-16 17:32:05,110 - Processed Employee Group: MULTI-MGR-00321264
+2024-06-16 17:32:18,677 - Processed Employee Group: JHH-JHHS-MGR-00365832
+2024-06-16 17:32:32,231 - Processed Employee Group: JHHS-S00-SC1-9-SCA-F-Admin
+2024-06-16 17:32:45,830 - Processed Employee Group: MULTI-MGR-00042806
+2024-06-16 17:32:59,478 - Processed Employee Group: MULTI-MGR-00303911
+2024-06-16 17:33:13,042 - Processed Employee Group: HCG-JHHS-MGR-00282772
+2024-06-16 17:33:26,582 - Processed Employee Group: MULTI-MGR-0033435
+2024-06-16 17:33:40,196 - Processed Employee Group: JHHR-Radiology-C.Shoats
+2024-06-16 17:33:53,714 - Processed Employee Group: BMC-MGR-00297096
+2024-06-16 17:34:07,397 - Processed Employee Group: BMC-BH1,BH2,BH6,BH7
