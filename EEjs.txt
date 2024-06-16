@@ -1,91 +1,45 @@
-// Function to simulate clicking a button by its aria-label
-function clickButtonByAriaLabel(buttonAriaLabel) {
-    const button = document.querySelector(`button[aria-label="${buttonAriaLabel}"]`);
-    if (button) {
-        button.click();
-    }
-}
+// Function to wait for a specified time
+const wait = ms => new Promise(resolve => setTimeout(resolve, ms));
 
-// Function to update the search bar with Org Sets Name
-function updateSearchBar(searchBarId, orgSetsName) {
-    const searchBar = document.getElementById(searchBarId);
-    if (searchBar) {
-        searchBar.value = orgSetsName;
-        // Trigger the change event to ensure any attached AngularJS ng-change or other event handlers are called
-        const event = new Event('input', { bubbles: true });
-        searchBar.dispatchEvent(event);
-    }
-}
+// Function to perform the actions with delays
+const executeActions = async () => {
+    // Click on the icon with class "icon-k-newrequest"
+    document.querySelector('.icon-k-newrequest').click();
+    await wait(1000);  // Wait for 1 second
 
-// Function to click the search bar
-function clickSearchBar(searchBarClass) {
-    const searchBar = document.querySelector(searchBarClass);
-    if (searchBar) {
-        searchBar.click();
-    }
-}
+    // Write OrgSet- in the first input field
+    const nameInput = document.querySelector('input[name="name"]');
+    nameInput.value = 'OrgSet-';
+    nameInput.dispatchEvent(new Event('input'));  // Trigger input event to ensure Angular detects the change
+    await wait(1000);  // Wait for 1 second
 
-// Function to search in the search input
-function searchInSearchBar(searchInputClass, searchValue) {
-    const searchInput = document.querySelector(searchInputClass);
-    if (searchInput) {
-        searchInput.value = searchValue;
-        // Trigger the change event to ensure any attached AngularJS ng-change or other event handlers are called
-        const event = new Event('input', { bubbles: true });
-        searchInput.dispatchEvent(event);
-    }
-}
+    // Write OrgSet- in the search field
+    const searchInput = document.querySelector('input[placeholder="Search..."]');
+    searchInput.value = 'OrgSet-';
+    searchInput.dispatchEvent(new Event('input'));  // Trigger input event to ensure Angular detects the change
+    await wait(1000);  // Wait for 1 second
 
-// Function to select the value that matches the Org Sets Name
-function selectValueByLabel(label) {
-    const spans = document.querySelectorAll('span[ng-bind-html]');
-    for (let span of spans) {
-        if (span.innerText.includes(label)) {
-            span.click();
-            return;
+    // Click the search button
+    document.querySelector('button.search-buttons__search').click();
+    await wait(1000);  // Wait for 1 second
+
+    // Wait for the search results to appear and select the desired item
+    const items = document.querySelectorAll('span[ng-bind-html="writeLabel( item, \'itemLabel\' )"]');
+    for (let item of items) {
+        if (item.textContent.includes('OrgSet-')) {
+            item.click();
+            break;
         }
     }
-}
+    await wait(1000);  // Wait for 1 second
 
-// Function to click the save button by its text content
-function clickSaveButton() {
-    const saveButton = document.evaluate("//span[normalize-space()='Save']", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
+    // Click on the "Save" button
+    const saveButton = Array.from(document.querySelectorAll('span[ng-bind-template="Save"]'))
+                            .find(span => span.innerText.includes('Save'));
     if (saveButton) {
         saveButton.click();
     }
-}
+};
 
-// Main function to perform the series of actions
-function performActions(orgSetsName) {
-    // Click the create button
-    clickButtonByAriaLabel('Create');
-    
-    // Wait for 1 second before the next action
-    setTimeout(() => {
-        // Update the search bar
-        updateSearchBar('metaid_data_name', orgSetsName);
-
-        // Wait another 1 second before clicking the search bar
-        setTimeout(() => {
-            clickSearchBar('#metaid_data_name');
-
-            // Wait another 1 second before searching in the search input
-            setTimeout(() => {
-                searchInSearchBar('.inputFilter', orgSetsName);
-
-                // Wait another 1 second before selecting the value
-                setTimeout(() => {
-                    selectValueByLabel(orgSetsName);
-
-                    // Wait another 1 second before clicking the save button
-                    setTimeout(() => {
-                        clickSaveButton();
-                    }, 1000);
-                }, 1000);
-            }, 1000);
-        }, 1000);
-    }, 1000);
-}
-
-// Call the function with the desired Org Sets Name
-performActions('OrgSet-');
+// Execute the function
+executeActions();

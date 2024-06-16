@@ -37,13 +37,13 @@ def process_line(line):
     time.sleep(1)
     pyautogui.hotkey('ctrl', 'v')  # Paste the JavaScript
     pyautogui.press('enter')  # Press enter
-    time.sleep(1)
-    pyautogui.click(47, 75)#Clear Console
+    time.sleep(8)
+    pyautogui.click(45, 71)#Clear Console
     time.sleep(1)
 
 
 # Read input file and process each line
-with open('input.txt', 'r') as file:
+with open('inp2.txt', 'r') as file:
     lines = file.readlines()
 
 for line in lines:
