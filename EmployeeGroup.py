@@ -37,8 +37,8 @@ def process_line(line):
     time.sleep(1)
     pyautogui.hotkey('ctrl', 'v')  # Paste the JavaScript
     pyautogui.press('enter')  # Press enter
-
-    pyautogui.click(47, 75)
+    time.sleep(1)
+    pyautogui.click(47, 75)#Clear Console
     time.sleep(1)
 
 
